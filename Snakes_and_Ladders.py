@@ -11,7 +11,7 @@ casasEspeciais = {
 }
 
 
-def coodenada_posicao(linha, coluna):
+def coordenada_posicao(linha, coluna):
     #Converte coordenadas (linha, coluna) para uma posição no tabuleiro (1-100) para o tabuleiro serpentear
     # Para linha sim linha não, a ordem da coluna é invertida para criar o serpenteado
     if linha % 2 != 0:
@@ -30,7 +30,7 @@ def imprime_tabuleiro(pos_jogador, pino_jogador, pos_computador):
         
         # Determina a ordem da coluna para imprimir da esquerda para a direita ou da direita para a esquerda
         for c in range(10):
-            pos = coodenada_posicao(r, c)
+            pos = coordenada_posicao(r, c)
             
             # Determina qual caractere mostrar para os jogadores
             caractere_pino = " "
@@ -58,7 +58,7 @@ def imprime_tabuleiro(pos_jogador, pino_jogador, pos_computador):
 
 
 def regras():
-    print("-=-= Bem Vindo ao Jogo cobras and escadas! =-=-")
+    print("-=-= Bem Vindo ao Jogo Cobras e Escadas! =-=-")
     sleep(1)
     regras_input = str(input("\n|Quer ver algumas regras? (S/N) "))
     if regras_input in "Ss":
@@ -207,6 +207,7 @@ def main():
         if pos_computador == 100:
             print(f"\n-=-=-=-= {Fore.RED}O COMPUTADOR VENCEU! TENTE NOVAMENTE!{Fore.WHITE} =-=-=-=-")
             break
+
 
 
 main()
