@@ -4,27 +4,27 @@ from colorama import Fore, Back
 
 
 casasEspeciais = {
-    # escadas
+    # Escadas
     4: 14, 8: 31, 15: 44, 19: 39, 34: 54, 41: 61, 45: 56, 57: 74, 62: 81, 69: 88, 76: 95, 80: 99, 87: 94,
-    # cobras
+    # Cobras
     97: 78, 91 : 72, 82: 63, 74: 52, 65: 51, 53: 33, 47: 26, 38: 20, 30: 11, 25: 5, 16: 7,
 }
 
 
 def coordenada_posicao(linha, coluna):
-    #Converte coordenadas (linha, coluna) para uma posição no tabuleiro (1-100) para o tabuleiro serpentear
+    # Converte coordenadas (linha, coluna) para uma posição no tabuleiro (1-100) para o tabuleiro serpentear
     # Para linha sim linha não, a ordem da coluna é invertida para criar o serpenteado
-    if linha % 2 != 0:
-        coluna = 9 - coluna
-    return linha * 10 + coluna + 1
+    if linha % 2 != 0: # Verifica se é ímpar
+        coluna = 9 - coluna 
+    return linha * 10 + coluna + 1 # Se for linha 5, retorna linha 50, se for coluna 6, retorna casa 7
 
 
 def imprime_tabuleiro(pos_jogador, pino_jogador, pos_computador):
-    """Imprime dinamicamente o tabuleiro com as posições dos jogadores."""
+    # Imprime o tabuleiro com as posições dos jogadores.
     escadas = {4, 8, 15, 19, 34, 41, 45, 57, 62, 69, 76, 80, 84, 87}
     cobras = {97, 82, 74, 65, 53, 47, 38, 30, 25, 16}
 
-    print()  # Linha extra para espaçamento
+    print()  # Print vazio pra dar um espaço
     for r in range(9, -1, -1):
         linha_casas = []
         
@@ -57,7 +57,7 @@ def imprime_tabuleiro(pos_jogador, pino_jogador, pos_computador):
     print()
 
 
-def regras():
+def regras(): # Imprime as regras do jogo
     print("-=-= Bem Vindo ao Jogo Cobras e Escadas! =-=-")
     sleep(1)
     regras_input = str(input("\n|Quer ver algumas regras? (S/N) "))
@@ -87,7 +87,7 @@ def pino_Jogador():
             print("\n|Colocando o seu pino no tabuleiro...\n")
             sleep(2)
             return pino[0]
-        elif pino == 'M': #checando se o jogador não escolhe M
+        elif pino == 'M': # Checando se o jogador não escolhe M
             print("\n|'M' é reservado para o computador. Escolha outro caractere.")
 
 
@@ -100,11 +100,7 @@ def turno_jogador():
 
     forca = 0
     forca = int(input("|Digite a força que você quer jogar os dados em uma escala de 1 até 10: "))
-    sleep(1)
-
-    dado1 = roda_dados()
-    dado2 = roda_dados()
-    somadados = dado1 + dado2
+    sleep(1) # Interatividade
 
     if forca <= 3:
         print("\n|Os dados quase não saem da sua mão!")
@@ -113,6 +109,10 @@ def turno_jogador():
     else:
         print("\n|Os dados quase saem da mesa!")
     sleep(1)
+
+    dado1 = roda_dados()
+    dado2 = roda_dados()
+    somadados = dado1 + dado2
 
     print(f"\n|Seus dados rodaram um {dado1} e um {dado2}! Você pode andar {somadados} casas!")
     sleep(1)
@@ -124,7 +124,7 @@ def turno_computador():
     print(f"\n|É a vez do computador (M)!")
     sleep(1)
 
-    falaComputador = randint(1, 3)
+    falaComputador = randint(1, 3) # Randomiza a fala do computador
     if falaComputador == 1:
         print("\n|O computador está rodando os seus dados!")
     elif falaComputador == 2:
@@ -147,7 +147,7 @@ def main():
     regras()
     pino_jogador = pino_Jogador()
 
-    pos_jogador = 1
+    pos_jogador = 1    # Coloca o jogador e o computador na casa 1
     pos_computador = 1
 
     print("\n-=-=-=-= COMEÇANDO O JOGO =-=-=-=-")
@@ -157,18 +157,18 @@ def main():
     
     print("\n|Boa sorte nos seus dados!")
     
-    while True:
+    while True: # Loop do jogo
         # Turno do Jogador
-        movimento = turno_jogador()
+        movimento = turno_jogador() # Movimento = soma dos dados = casas que ele vai andar
         pos_jogador += movimento
-        if pos_jogador > 100:
+        if pos_jogador > 100: # Checa se o jogador passou da casa 100
             pos_jogador = 100
 
         print(f"|Você avançou para a casa {pos_jogador}.")
         sleep(1)
 
-        if pos_jogador in casasEspeciais: #chamando o dicionario de casas especiais
-            nova_pos = casasEspeciais[pos_jogador]
+        if pos_jogador in casasEspeciais: # Chamando o dicionario de casas especiais
+            nova_pos = casasEspeciais[pos_jogador] # Pega a chave e retorna o valor do dicionário
             if nova_pos > pos_jogador:
                 print(f"|{Fore.GREEN}Que sorte!{Fore.WHITE} Você achou uma escada na casa {pos_jogador} e subiu para {nova_pos}!")
             else:
@@ -183,6 +183,7 @@ def main():
             break
 
         # Turno do Computador
+        # Mesma coisa do Turno jogador, só muda pos_jogador para pos_computador
         movimento = turno_computador()
         pos_computador += movimento
         if pos_computador > 100:
@@ -208,5 +209,5 @@ def main():
 
 
 
-main()
+main() # Roda o main com o loop do jogo
 
