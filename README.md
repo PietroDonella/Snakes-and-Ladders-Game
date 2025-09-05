@@ -6,4 +6,4 @@ Uma versão simples do jogo Snakes and Ladders onde você joga contra a CPU em u
   Time (sleep)
   Colorama (Fore, Back)
 
-O código usa Matriz e Dicionários, como também organização em funções, além de comentários para melhor compreenção do código por parte do leitor.
+O código usa Matriz e Dicionários, como também organização em funções, além de comentários para melhor compreensão do código por parte do leitor.
