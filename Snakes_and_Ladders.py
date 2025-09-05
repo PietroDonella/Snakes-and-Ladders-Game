@@ -7,7 +7,7 @@ casasEspeciais = {
     # escadas
     4: 14, 8: 31, 15: 44, 19: 39, 34: 54, 41: 61, 45: 56, 57: 74, 62: 81, 69: 88, 76: 95, 80: 99, 87: 94,
     # cobras
-    97: 78, 91 : 72, 82: 63, 74: 53, 65: 51, 53: 33, 47: 26, 38: 20, 30: 11, 25: 5, 16: 7,
+    97: 78, 91 : 72, 82: 63, 74: 52, 65: 51, 53: 33, 47: 26, 38: 20, 30: 11, 25: 5, 16: 7,
 }
 
 
@@ -89,8 +89,6 @@ def pino_Jogador():
             return pino[0]
         elif pino == 'M': #checando se o jogador não escolhe M
             print("\n|'M' é reservado para o computador. Escolha outro caractere.")
-        else:
-            print("\n|Por favor, digite um caractere.")
 
 
 def roda_dados():
@@ -211,3 +209,4 @@ def main():
 
 
 main()
+
